@@ -1,4 +1,5 @@
 import React from "react";
+import './App.css'; // Importation du fichier CSS
 
 const Home = () => {
   return (
@@ -36,19 +37,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <style>
-        {`
-          @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
-          }
-        `}
-      </style>
     </>
   );
 };
