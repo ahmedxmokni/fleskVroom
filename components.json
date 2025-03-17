@@ -1,0 +1,16 @@
+{
+    "components": {
+      "card": {
+        "import": "import { Card, CardContent, CardHeader, CardTitle } from '@shadcn/ui/card';",
+        "path": "@/components/ui/card"
+      },
+      "input": {
+        "import": "import { Input } from '@shadcn/ui/input';",
+        "path": "@/components/ui/input"
+      },
+      "button": {
+        "import": "import { Button } from '@shadcn/ui/button';",
+        "path": "@/components/ui/button"
+      }
+    }
+  }

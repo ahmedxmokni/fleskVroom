@@ -10,7 +10,7 @@ const Products = ({ cars }) => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
 
   const dispatch = useDispatch();
 

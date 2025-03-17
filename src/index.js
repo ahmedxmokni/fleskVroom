@@ -12,7 +12,7 @@ import {
   Products,
   AboutPage,
   ContactPage,
-  Cart,
+  Annonce,
   Login,
   Register,
   Checkout,
@@ -32,7 +32,7 @@ root.render(
           <Route path="/product/:id" element={<Product />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/annonce" element={<Annonce />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/checkout" element={<Checkout />} />
