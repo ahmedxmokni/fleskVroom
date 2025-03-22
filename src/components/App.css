@@ -1,4 +1,57 @@
+/* Animation fadeIn */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Animation slideIn */
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* Animation bounce */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-30px); }
+  60% { transform: translateY(-15px); }
+}
+
+/* Button hover effect */
+.btn-outline-dark:hover {
+  background-color: #343a40;
+  color: #ffffff;
+  border-color: #343a40;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Card styles */
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+  transition: transform 0.3s;
+}
+
+/* Alert styles */
+.alert {
+  animation: slideIn 1s ease-in-out;
+}
+
+/* Bounce effect for icons */
+.icon-bounce {
+  display: inline-block;
+  animation: bounce 2s infinite;
+}
+
+/* General container animation */
+.container {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Zoom effect for ads */
+.ad-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.ad-card:hover {
+  transform: scale(1.05);
+}

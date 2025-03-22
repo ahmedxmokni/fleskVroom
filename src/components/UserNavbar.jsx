@@ -1,8 +1,30 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
 
-const Navbar = () => {
+const UserNavbar = () => {
     const [showServices, setShowServices] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        Swal.fire({
+            title: 'Êtes-vous sûr de vouloir vous déconnecter?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Oui, Déconnecter!',
+            cancelButtonText: 'Annuler'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Clear authentication token from local storage
+                localStorage.removeItem("authToken");
+                navigate('/login');
+            }
+        });
+    };
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
@@ -23,7 +45,7 @@ const Navbar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/annonce">Vendre Voiture</NavLink>
                         </li>
-                        
+
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/contact">Contact</NavLink>
                         </li>
@@ -44,8 +66,11 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className="buttons text-center">
-                        <NavLink to="/login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-in-alt mr-1"></i> Se Connecter</NavLink>
-                        <NavLink to="/register" className="btn btn-outline-dark m-2"><i className="fa fa-user-plus mr-1"></i> S'inscrire</NavLink>
+                        <NavLink to="/favoris" className="btn btn-outline-dark m-2"><i className="fa fa-star mr-1"></i> Favoris </NavLink>
+                        <button className="btn btn-danger m-2" onClick={handleLogout}>
+                            <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
+                            Déconnexion
+                        </button>
                     </div>
                 </div>
             </div>
@@ -53,4 +78,4 @@ const Navbar = () => {
     );
 }
 
-export default Navbar;
+export default UserNavbar;

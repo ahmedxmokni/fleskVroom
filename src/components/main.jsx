@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './App.css'; // Importation du fichier CSS
+import './App.css'; // Import the CSS file
 
 const Home = () => {
   const [brand, setBrand] = useState("");
@@ -12,15 +12,15 @@ const Home = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    // Implémentez la logique de filtrage ici
-    console.log("Recherche de voitures avec les critères suivants :");
-    console.log("Condition :", condition);
-    console.log("Marque :", brand);
-    console.log("Modèle :", model);
-    console.log("Prix min :", minPrice);
-    console.log("Prix max :", maxPrice);
-    console.log("Code postal :", zip);
-    console.log("Distance :", distance);
+    // Implement the filtering logic here
+    console.log("Searching for cars with the following criteria:");
+    console.log("Condition:", condition);
+    console.log("Brand:", brand);
+    console.log("Model:", model);
+    console.log("Min Price:", minPrice);
+    console.log("Max Price:", maxPrice);
+    console.log("ZIP Code:", zip);
+    console.log("Distance:", distance);
   };
 
   return (
@@ -48,11 +48,10 @@ const Home = () => {
               style={{ borderRadius: "8px" }}
             >
               <h5 className="card-title fs-1 fw-lighter">
-                Trouvez votre voiture idéale dès aujourd'hui !
+                Trouvez votre voiture idéale dès aujourd'hui!
               </h5>
               <p className="card-text fs-5 d-none d-sm-block">
-                🚀 "Trouvez une voiture qui correspond à votre style et votre
-                budget. Des prix compétitifs, un service rapide !"
+                🚀 "Trouvez une voiture qui correspond à votre style et votre budget. Des prix compétitifs, un service rapide!"
               </p>
             </div>
           </div>
@@ -68,9 +67,9 @@ const Home = () => {
               value={condition}
               onChange={(e) => setCondition(e.target.value)}
             >
-              <option value="new-used">New & Used</option>
-              <option value="new">New</option>
-              <option value="used">Used</option>
+              <option value="new-used">Neuf & Occasion</option>
+              <option value="new">Nouveau</option>
+              <option value="used">Occasion</option>
             </select>
           </div>
           <div className="col-md-2">
@@ -81,11 +80,11 @@ const Home = () => {
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
             >
-              <option value="">Select Brand</option>
+              <option value="">Sélectionner une marque</option>
               <option value="Tesla">Tesla</option>
               <option value="Toyota">Toyota</option>
               <option value="Ford">Ford</option>
-              {/* Ajoutez d'autres marques ici */}
+              {/* Add more brands here */}
             </select>
           </div>
           <div className="col-md-2">
@@ -96,11 +95,11 @@ const Home = () => {
               value={model}
               onChange={(e) => setModel(e.target.value)}
             >
-              <option value="">Select Model</option>
+              <option value="">Sélectionner un modèle</option>
               <option value="Model S">Model S</option>
               <option value="Model 3">Model 3</option>
               <option value="Model X">Model X</option>
-              {/* Ajoutez d'autres modèles ici */}
+              {/* Add more models here */}
             </select>
           </div>
           <div className="col-md-2">
@@ -111,22 +110,22 @@ const Home = () => {
               value={distance}
               onChange={(e) => setDistance(e.target.value)}
             >
-              <option value="10">10 miles</option>
-              <option value="20">20 miles</option>
-              <option value="30">30 miles</option>
-              <option value="50">50 miles</option>
-              <option value="100">100 miles</option>
+              <option value="10">10 km</option>
+              <option value="20">20 km</option>
+              <option value="30">30 km</option>
+              <option value="50">50 km</option>
+              <option value="100">100 km</option>
             </select>
           </div>
           <div className="col-md-2">
-            <label htmlFor="zip" className="form-label">ZIP</label>
+            <label htmlFor="zip" className="form-label">Code Postal</label>
             <input
               type="text"
               className="form-control"
               id="zip"
               value={zip}
               onChange={(e) => setZip(e.target.value)}
-              placeholder="ZIP"
+              placeholder="Code Postal"
             />
           </div>
           <div className="col-md-2">
@@ -152,7 +151,7 @@ const Home = () => {
             />
           </div>
           <div className="col-md-2 d-flex align-items-end">
-            <button type="submit" className="btn btn-dark m-1">Show Matches</button>
+            <button type="submit" className="btn btn-dark m-1">Afficher les résultats</button>
           </div>
         </form>
       </div>

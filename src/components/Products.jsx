@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../redux/action";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -10,17 +10,26 @@ const Products = ({ cars }) => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error] = useState(null);
+  const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.handleCart); // Get the favorites from Redux
 
   const addProduct = (product) => {
+    // Check if the product is already in favorites
+    const alreadyInFavorites = favorites.some((item) => item.id === product.id);
+
+    if (alreadyInFavorites) {
+      toast.error("Déjà dans les favoris!");
+      return;
+    }
+
     dispatch(addCart(product));
-    toast.success("Ajouté au panier");
+    toast.success("Ajouté aux favoris!");
   };
 
   useEffect(() => {
-    // Données fictives pour l'affichage
+    // Sample car data for display
     const demoData = [
       {
         id: "1",
@@ -103,7 +112,7 @@ const Products = ({ cars }) => {
   );
 
   const filterProduct = (category) => {
-    if (category === "Toutes") {
+    if (category === "All") {
       setFilter(data);
     } else {
       const updatedList = data.filter((car) => car.type === category);
@@ -114,7 +123,7 @@ const Products = ({ cars }) => {
   const ShowProducts = () => (
     <>
       <div className="buttons text-center py-4">
-        {["Toutes", "SUV", "Sedan", "Truck", "Electric"].map((category) => (
+        {["Tous", "SUV", "Sedan", "Truck", "Électrique"].map((category) => (
           <button
             key={category}
             className="btn btn-outline-dark btn-sm m-2"
@@ -128,7 +137,7 @@ const Products = ({ cars }) => {
       <div className="row">
         {filter.length > 0 ? filter.map((car) => (
           <div key={car.id} className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4">
-            <div className="card text-center h-100">
+            <div className="card text-center h-100 ad-card">
               <img
                 className="card-img-top p-3"
                 src={car.image || "https://via.placeholder.com/300"}
@@ -150,7 +159,7 @@ const Products = ({ cars }) => {
                   Acheter Maintenant
                 </Link>
                 <button className="btn btn-dark m-1" onClick={() => addProduct(car)}>
-                  Ajouter au Panier
+                  Ajouter au favoris
                 </button>
               </div>
             </div>
